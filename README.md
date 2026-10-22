@@ -19,7 +19,8 @@ IMI のサイトの内容は、個別の指定が無い限り CC0 1.0 です。
 
 | テーブル | 内容 |
 | --- | --- |
-| `vocab.term` | コア語彙の語。1行が1語（クラスかプロパティ） |
+| `vocab.term` | コア語彙の語。1行が1語（クラス・プロパティ・データ型、309 語） |
+| `vocab.class_property` | クラスが持てるプロパティ。1行がクラスとプロパティの組 |
 
 ```sql
 SELECT name, kind, label_ja, domain, range

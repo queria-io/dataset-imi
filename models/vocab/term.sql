@@ -6,6 +6,7 @@ select
     uri,
     name,
     kind,
+    cast(deprecated as boolean) as deprecated,
     nullif(label_ja, '') as label_ja,
     nullif(label_en, '') as label_en,
     nullif(description, '') as description,
