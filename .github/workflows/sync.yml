@@ -1,0 +1,23 @@
+name: Sync
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "*.md"
+  schedule:
+    # 毎年 1 月 3 日 05:00 JST。コア語彙は 2019 年の 2.4.2 から更新が無く、
+    # 配布元が消えたり変わったりしていないかを確かめる程度に回す
+    - cron: "0 20 2 1 *"
+  workflow_dispatch:
+
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    uses: queria-io/dataset-shared/.github/workflows/sync.yml@main
+    with:
+      dataset_name: imi
+    secrets: inherit
