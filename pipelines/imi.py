@@ -89,7 +89,8 @@ def term_rows(graph: Graph) -> list[dict]:
 
     def row(s: URIRef) -> dict:
         rdf_types = set(graph.objects(s, RDF.type))
-        types = {KINDS.get(t, local(t)) for t in rdf_types}
+        # owl:FunctionalProperty のような付随する型は落とし、知らない型しか無いときだけ URI を残す
+        types = {KINDS[t] for t in rdf_types if t in KINDS} or {local(t) for t in rdf_types}
         return {
             "version": VERSION,
             "uri": str(s),
@@ -164,6 +165,8 @@ def download_imi(output_dir: Path = OUTPUT_DIR) -> int:
     write_csv(output_dir / "term.csv", rows)
     logger.info("  term: %d 語（%s）", len(rows), Counter(r["kind"] for r in rows))
     links = class_property_rows(graph)
+    if not links:
+        raise SystemExit(f"{SCHEMA_URL}: クラスの制約（owl:Restriction）が 1 つも取れなかった")
     write_csv(output_dir / "class_property.csv", links)
     logger.info("  class_property: %d 行", len(links))
     return len(rows)
