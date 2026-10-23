@@ -1,0 +1,32 @@
+version: 2
+
+models:
+- name: term
+  description: IMI コア語彙の語。1行が1語。
+  access: public
+  columns:
+  - name: uri
+    data_tests: [not_null, unique]
+  - name: name
+    data_tests: [not_null]
+  - name: kind
+    data_tests:
+    - not_null
+    - accepted_values:
+        arguments:
+          values: [class, property, datatype]
+  - name: deprecated
+    data_tests: [not_null]
+- name: class_property
+  description: クラスが持てるプロパティ。1行がクラスとプロパティの組。
+  access: public
+  columns:
+  - name: class_name
+    data_tests:
+    - not_null
+    - relationships:
+        arguments:
+          to: ref('term')
+          field: "'ic:' || name"
+  - name: property_name
+    data_tests: [not_null]

@@ -1,0 +1,21 @@
+name: "imi"
+version: "1.0.0"
+
+profile: "imi"
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros", "shared/macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  imi:
+    +database: imi
+    vocab:
+      +materialized: table

@@ -1,0 +1,21 @@
+schema: vocab
+name: class_property
+title: クラスとプロパティ
+description: IMI コア語彙で、クラスが持てるプロパティ。1行がクラスとプロパティの組で、値の型と最大の個数を持つ。RDF スキーマの owl:Restriction から取った。上位のクラスから受け継ぐプロパティは、上位のクラスの行にだけある（住所型の行に事物型のプロパティは出ない）。
+published: true
+sources:
+  - path: https://imi.go.jp/core/core242/
+fields:
+  - name: version
+    title: 版
+  - name: class_name
+    title: クラス
+    description: "ic:住所型 のような短い形。vocab.term の name に ic: を付けたもの"
+  - name: property_name
+    title: プロパティ
+  - name: value_type
+    title: 値の型
+    description: クラス（ic:コード型 など）かデータ型（xsd:string など）
+  - name: max_cardinality
+    title: 最大の個数
+    description: 持てる値の最大数。NULL は上限なし

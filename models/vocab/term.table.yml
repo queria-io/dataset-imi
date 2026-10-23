@@ -1,0 +1,37 @@
+schema: vocab
+name: term
+title: コア語彙の語
+description: IMI 共通語彙基盤のコア語彙 2.4.2 の語。1行が1語（309 語）で、クラス（住所型、施設型など「〜型」）とプロパティ（住所、表記、緯度など）がある。語の名前は日本語だけで、URI は http://imi.go.jp/ns/core/rdf# に名前を続けたもの。GIF（gif データセット）のコアデータモデルは、多くの項目でこの語彙を参考元にしている。
+published: true
+sources:
+  - path: https://imi.go.jp/core/core242/
+fields:
+  - name: version
+    title: 版
+  - name: uri
+    title: URI
+  - name: name
+    title: 語
+    description: URI の名前の部分。ic:住所型 の 住所型
+  - name: kind
+    title: 種類
+    description: class・property・datatype のどれか。RDF の型がそれ以外のときは型の URI をそのまま入れる
+  - name: deprecated
+    title: 非推奨
+    description: 版上げで非推奨になった語（owl:DeprecatedClass / owl:DeprecatedProperty）なら true
+  - name: label_ja
+    title: ラベル
+  - name: label_en
+    title: ラベル（英語）
+    description: 英語のラベルがある語だけ。コア語彙の多くの語には無い
+  - name: description
+    title: 説明
+  - name: parent
+    title: 上位の語
+    description: "上位のクラス（rdfs:subClassOf）またはプロパティ（rdfs:subPropertyOf）。ic: で始まる短い形。複数あるときは | でつなぐ"
+  - name: domain
+    title: 定義域
+    description: このプロパティを持つクラス。複数あるときは | でつなぐ
+  - name: range
+    title: 値域
+    description: このプロパティの値の型。複数あるときは | でつなぐ
