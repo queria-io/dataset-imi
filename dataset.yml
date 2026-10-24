@@ -17,6 +17,7 @@ keywords:
   - RDF
 homepage: https://github.com/queria-io/dataset-imi
 language: ja
+themes: [other]
 
 licenses:
   - CC0-1.0
