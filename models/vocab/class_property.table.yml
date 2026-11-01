@@ -2,7 +2,6 @@ schema: vocab
 name: class_property
 title: クラスとプロパティ
 description: IMI コア語彙で、クラスが持てるプロパティ。1行がクラスとプロパティの組で、値の型と最大の個数を持つ。RDF スキーマの owl:Restriction から取った。上位のクラスから受け継ぐプロパティは、上位のクラスの行にだけある（住所型の行に事物型のプロパティは出ない）。
-published: true
 sources:
   - path: https://imi.go.jp/core/core242/
 fields:
