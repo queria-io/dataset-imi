@@ -1,6 +1,6 @@
 # この dataset.yml は fdl commit が読む（FDL の dataset.json を YAML で書いたもの）。
 # 表の説明は models/ の *.table.yml に書く。表と列の型・NULL・行数は fdl commit がカタログから埋める。
-# Queria だけの項目（テーマ・カバー・列の意味）は extensions.queria に書く。
+# Queria だけの項目（テーマ・カバー・列の意味）は annotations.queria に書く。
 name: imi
 title: IMI 共通語彙基盤 コア語彙
 description: |-
@@ -39,7 +39,7 @@ schemas:
   - name: vocab
     title: 語彙
 
-extensions:
+annotations:
   queria:
     themes: [other]
     cover: 📘
