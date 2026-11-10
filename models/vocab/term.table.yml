@@ -7,6 +7,7 @@ description: |-
   - 語の URI は http://imi.go.jp/ns/core/rdf# に名前を続けたものです
 sources:
   - path: https://imi.go.jp/core/core242/
+primary_key: [uri]
 fields:
   - name: version
     title: バージョン
