@@ -39,7 +39,7 @@ WHERE name LIKE '%コード';
 ```bash
 git submodule update --init
 uv sync
-scripts/build.sh   # queria sync -- python main.py
+scripts/build.sh   # fdl checkout → python main.py → fdl commit
 ```
 
 PR では `Build` ワークフローが、公開せずにパイプラインと `dbt build` だけを実行します。
