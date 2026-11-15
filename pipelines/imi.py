@@ -6,6 +6,7 @@
 出力:
 - data/imi/term.csv（1行 = コア語彙の 1 語。クラスとプロパティ）
 - data/imi/class_property.csv（1行 = クラスが持てるプロパティ 1 つ。OWL の制約から取る）
+- data/imi/source_file.parquet（取得したファイルの記録）
 
 データソース: IMI 情報共有基盤 共通語彙基盤 コア語彙 2.4.2
 https://imi.go.jp/core/core242/
@@ -14,13 +15,15 @@ https://imi.go.jp/core/core242/
 import csv
 import io
 import logging
-import urllib.request
 import zipfile
 from collections import Counter
 from functools import reduce
 from pathlib import Path
 
 from rdflib import OWL, RDF, RDFS, XSD, BNode, Graph, Literal, Namespace, URIRef
+
+from pipelines.source_file import write_source_files
+from shared.fetch import fetch_file
 
 logger = logging.getLogger("pipelines")
 
@@ -47,9 +50,8 @@ FORMATS = {".ttl": "turtle", ".rdf": "xml", ".owl": "xml", ".xml": "xml", ".json
 PREFIXES = {str(IC): "ic:", str(XSD): "xsd:"}
 
 
-def download(url: str = SCHEMA_URL) -> bytes:
-    with urllib.request.urlopen(url) as res:
-        return res.read()
+USER_AGENT = "dataset-imi (+https://github.com/queria-io/dataset-imi)"
+PAGE_URL = "https://imi.go.jp/core/core242/"
 
 
 def load_graph(archive: bytes) -> Graph:
@@ -156,7 +158,9 @@ def write_csv(path: Path, rows: list[dict]) -> None:
 
 def download_imi(output_dir: Path = OUTPUT_DIR) -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
-    graph = load_graph(download())
+    archive = output_dir / "schema_rdf.zip"
+    source = fetch_file(SCHEMA_URL, archive, user_agent=USER_AGENT)
+    graph = load_graph(archive.read_bytes())
     # 形が想定と違ったときに原因を追えるよう、述語の内訳を残す
     logger.info("  述語: %s", Counter(local(p) for p in graph.predicates()).most_common())
     rows = term_rows(graph)
@@ -169,4 +173,6 @@ def download_imi(output_dir: Path = OUTPUT_DIR) -> int:
         raise SystemExit(f"{SCHEMA_URL}: クラスの制約（owl:Restriction）が 1 つも取れなかった")
     write_csv(output_dir / "class_property.csv", links)
     logger.info("  class_property: %d 行", len(links))
+    paths = [str(output_dir / "term.csv"), str(output_dir / "class_property.csv")]
+    write_source_files([{**source, "page_url": PAGE_URL, "paths": paths}], output_dir / "source_file.parquet")
     return len(rows)

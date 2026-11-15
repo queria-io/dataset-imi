@@ -38,3 +38,6 @@ fields:
   - name: range
     title: 値域
     description: このプロパティの値の型。複数のときは | 区切り
+  - name: source_sha256
+    title: 元のファイルの SHA-256
+    description: この行を読んだファイルの SHA-256 です。source_file の sha256 に当たります
