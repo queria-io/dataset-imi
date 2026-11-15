@@ -17,6 +17,7 @@ clean-targets:
 models:
   imi:
     +database: imi
+    +materialized: table
     vocab:
       raw:
         +materialized: table
