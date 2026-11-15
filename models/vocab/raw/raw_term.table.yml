@@ -1,0 +1,4 @@
+schema: vocab
+name: raw_term
+description: コア語彙の語（data/imi/term.csv）（取得したままの形）
+annotations: { queria: { published: false } }

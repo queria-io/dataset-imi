@@ -13,4 +13,4 @@ select
     nullif(parent, '') as parent,
     nullif(domain, '') as domain,
     nullif(range, '') as range
-from read_csv('data/imi/term.csv', header = true, all_varchar = true)
+from {{ ref('raw_term') }}
