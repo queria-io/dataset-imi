@@ -1,4 +1,0 @@
-schema: vocab
-name: raw_class_property
-description: クラスが持てるプロパティ（data/imi/class_property.csv）（取得したままの形）
-annotations: { queria: { published: false } }
