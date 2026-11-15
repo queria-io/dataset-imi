@@ -6,5 +6,6 @@ select
     class_name,
     property_name,
     nullif(value_type, '') as value_type,
-    try_cast(nullif(max_cardinality, '') as integer) as max_cardinality
+    try_cast(nullif(max_cardinality, '') as integer) as max_cardinality,
+    filename as source_path
 from {{ ref('raw_class_property') }}

@@ -12,5 +12,6 @@ select
     nullif(description, '') as description,
     nullif(parent, '') as parent,
     nullif(domain, '') as domain,
-    nullif(range, '') as range
+    nullif(range, '') as range,
+    filename as source_path
 from {{ ref('raw_term') }}
