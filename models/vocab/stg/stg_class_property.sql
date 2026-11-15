@@ -7,4 +7,4 @@ select
     property_name,
     nullif(value_type, '') as value_type,
     try_cast(nullif(max_cardinality, '') as integer) as max_cardinality
-from read_csv('data/imi/class_property.csv', header = true, all_varchar = true)
+from {{ ref('raw_class_property') }}
