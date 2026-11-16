@@ -1,6 +1,4 @@
-# この dataset.yml は fdl commit が読む（FDL の dataset.json を YAML で書いたもの）。
-# 表の説明は models/ の *.table.yml に書く。表と列の型・NULL・行数は fdl commit がカタログから埋める。
-# Queria だけの項目（テーマ・カバー・列の意味）は annotations.queria に書く。
+$schema: https://queria.io/schemas/dataset/v1.json
 name: imi
 title: IMI 共通語彙基盤 コア語彙
 description: |-
@@ -17,7 +15,6 @@ keywords:
   - RDF
 homepage: https://github.com/queria-io/dataset-imi
 language: ja
-
 licenses:
   - CC0-1.0
 
@@ -32,13 +29,9 @@ contributors:
 
 spatial_coverage: [JP]
 update_frequency: irregular
-
 schemas:
   - name: vocab
     title: 語彙
 
-annotations:
-  queria:
-    themes: [other]
-    cover: 📘
-...
+themes: [other]
+cover: 📘

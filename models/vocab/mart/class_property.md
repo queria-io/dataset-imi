@@ -1,5 +1,6 @@
-schema: vocab
-name: class_property
+---
+$schema: https://queria.io/schemas/table/v1.json
+table: vocab.class_property
 title: クラスとプロパティ
 description: |-
   IMI コア語彙で、クラスが持てるプロパティです。1 行がクラスとプロパティの組で、値の型と最大の個数を持ちます。
@@ -24,3 +25,4 @@ fields:
   - name: source_sha256
     title: 元のファイルの SHA-256
     description: この行を読んだファイルの SHA-256 です。source_file の sha256 に当たります
+---

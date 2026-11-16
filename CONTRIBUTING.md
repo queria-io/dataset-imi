@@ -1,0 +1,13 @@
+# ビルドと更新
+
+データセットの概要は [README.md](README.md) にあります。ここにはこのリポジトリでデータセットをビルド・更新する手順を書きます。
+
+## ビルド
+
+```bash
+git submodule update --init
+uv sync
+scripts/build.sh   # fdl checkout → python main.py → fdl commit
+```
+
+PR では `Build` ワークフローが、公開せずにパイプラインと `dbt build` だけを実行します。

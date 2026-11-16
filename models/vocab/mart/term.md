@@ -1,5 +1,6 @@
-schema: vocab
-name: term
+---
+$schema: https://queria.io/schemas/table/v1.json
+table: vocab.term
 title: コア語彙の語
 description: |-
   IMI コア語彙 2.4.2 の語です。1 行が 1 語で、クラス（住所型など「〜型」）とプロパティ（住所、緯度など）があります。
@@ -41,3 +42,4 @@ fields:
   - name: source_sha256
     title: 元のファイルの SHA-256
     description: この行を読んだファイルの SHA-256 です。source_file の sha256 に当たります
+---
