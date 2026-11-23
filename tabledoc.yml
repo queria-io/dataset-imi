@@ -1,11 +1,11 @@
-$schema: https://queria.io/schemas/dataset/v1.json
+$schema: https://tabledoc.queria.io/schemas/dataset/v1.json
 name: imi
 title: IMI 共通語彙基盤 コア語彙
 description: |-
   IMI 共通語彙基盤のコア語彙 2.4.2 です。住所・施設・組織・人などを記述するための語（クラスとプロパティ）を、URI・ラベル・説明・定義域・値域とともに収録しています。
 
   出典：IMI 情報共有基盤 共通語彙基盤 コア語彙 2.4.2。Queria が加工したものです。
-keywords:
+topics:
   - 語彙
   - メタデータ
   - データ標準
@@ -19,11 +19,13 @@ licenses:
   - CC0-1.0
 
 sources:
-  - title: IMI 共通語彙基盤 コア語彙 2.4.2
+  - id: core242
+    title: IMI 共通語彙基盤 コア語彙 2.4.2
     path: https://imi.go.jp/core/core242/
 
 contributors:
-  - title: IMI 情報共有基盤
+  - id: imi
+    title: IMI 情報共有基盤
     path: https://imi.go.jp/
     roles: [rightsHolder]
 
@@ -32,6 +34,3 @@ update_frequency: irregular
 schemas:
   - name: vocab
     title: 語彙
-
-themes: [other]
-cover: 📘
