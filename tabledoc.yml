@@ -22,12 +22,12 @@ licenses:
 sources:
   - id: core242
     title: IMI 共通語彙基盤 コア語彙 2.4.2
-    path: https://imi.go.jp/core/core242/
+    url: https://imi.go.jp/core/core242/
 
 contributors:
   - id: imi
     title: IMI 情報共有基盤
-    path: https://imi.go.jp/
+    url: https://imi.go.jp/
     roles: [rightsHolder]
 
 spatial_coverage: [JP]
