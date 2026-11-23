@@ -34,4 +34,3 @@ update_frequency: irregular
 schemas:
   - name: vocab
     title: 語彙
-
