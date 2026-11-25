@@ -17,6 +17,7 @@ columns:
   - name: kind
     title: 種類
     description: class・property・datatype。それ以外は RDF の型の URI
+    dimension: categorical
   - name: deprecated
     title: 非推奨
     description: 非推奨になった語なら true
